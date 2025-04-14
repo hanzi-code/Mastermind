@@ -24,7 +24,7 @@ class Code
       end
     end
 
-    # Check color matches
+    # Check color matches (right color, wrong position)
     guess_remaining.compact.each do |color|
       if secret_remaining.include?(color)
         color_matches += 1

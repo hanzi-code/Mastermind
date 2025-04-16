@@ -21,6 +21,7 @@ class Game
       play_player_guessing
     else
       play_computer_guessing
+    end
   end
 
   private
@@ -78,7 +79,7 @@ class Game
 
     @displayer.show_feedback(guess, feedback[:exact], feedback[:color])
     @computer.receive_feedback(feedback)
-    
+
     @game_won = true if feedback[:exact] == Code::CODE_LENGTH
     sleep(1) unless @game_won
   end

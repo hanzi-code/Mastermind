@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Code
   COLORS = [:red, :green, :yellow, :magenta, :blue, :cyan].freeze
   CODE_LENGTH = 4

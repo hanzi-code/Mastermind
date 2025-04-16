@@ -6,7 +6,7 @@ class Code
 
   attr_reader :value
 
-  def initialize(value)
+  def initialize(value = nil)
     @value = value || generate_random_code
   end
 
@@ -18,7 +18,7 @@ class Code
     guess_remaining = guess.value.dup
 
     # Check exact matches
-    CODE_LENGTH.each do |i|
+    CODE_LENGTH.times do |i|
       if guess.value[i] == @value[i]
         exact_matches += 1
         secret_remaining[i] = nil

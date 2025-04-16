@@ -4,7 +4,7 @@ require_relative 'code.rb'
 class Displayer
   def show_welcome_message
     puts "Welcome to Mastermind!".colorize(:light_blue).bold
-    puts "Available colors: #{Code::COLORS.map {|c| c.to_s.colorize(c)}.join(', ')}"
+    puts "Available colors: #{Code.color_options}"
   end
 
   def show_round_header(current_round, max_rounds)
@@ -12,7 +12,7 @@ class Displayer
   end
 
   def show_feedback(guess, exact_matches, color_matches)
-    print "Feedback for #{guess}: "
+    print "Feedback for #{guess.to_s}: "
     print "● " * exact_matches if exact_matches > 0
     print "○ " * color_matches if color_matches > 0
     puts ""

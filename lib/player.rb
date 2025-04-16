@@ -4,11 +4,11 @@ require_relative 'code.rb'
 class Player
   def get_guess
     loop do
-      print "Enter you guess (e.g, red green blue yellow): "
+      print "Enter your guess (e.g, red green blue yellow): "
       input = gets.chomp.downcase.split.map(&:to_sym)
 
       if valid_guess?(input)
-        return Code.new
+        return Code.new(input)
       else
         puts "Invalid guess. Please enter #{Code::CODE_LENGTH} colors from: #{Code::COLORS.join(', ')}".colorize(:light_red)
       end
@@ -23,7 +23,7 @@ class Player
       input = gets.chomp.downcase.split.map(&:to_sym)
 
       if valid_guess?(input)
-        return Code.new
+        return Code.new(input)
       else
         puts "Invalid code. Please enter #{Code::CODE_LENGTH} colors from: #{Code::COLORS.join(', ')}".colorize(:light_red)
       end

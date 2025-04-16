@@ -1,7 +1,7 @@
 require 'colorize'
 
 class Code
-  COLORS = [:red, :green, :yellow, :magenta, :blue, :cyan].freeze
+  COLORS = %i[red green yellow magenta blue cyan].freeze
   CODE_LENGTH = 4
 
   attr_reader :value
@@ -23,11 +23,11 @@ class Code
 
     # Check exact matches
     CODE_LENGTH.times do |i|
-      if guess.value[i] == @value[i]
-        exact_matches += 1
-        secret_remaining[i] = nil
-        guess_remaining[i] = nil
-      end
+      next unless guess.value[i] == @value[i]
+
+      exact_matches += 1
+      secret_remaining[i] = nil
+      guess_remaining[i] = nil
     end
 
     # Check color matches (right color, wrong position)
@@ -36,18 +36,17 @@ class Code
         color_matches += 1
         secret_remaining[secret_remaining.index(color)] = nil
       end
+    end
+    { exact: exact_matches, color: color_matches }
   end
-  {exact: exact_matches, color: color_matches}
-end
 
-def to_s
-  @value.map {|color| "● ".colorize(color)}.join
-end
+  def to_s
+    @value.map { |color| '● '.colorize(color) }.join
+  end
 
-private
+  private
 
-def generate_random_code
-  CODE_LENGTH.times.map {COLORS.sample}
-end
-
+  def generate_random_code
+    CODE_LENGTH.times.map { COLORS.sample }
+  end
 end

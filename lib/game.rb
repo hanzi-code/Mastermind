@@ -1,8 +1,8 @@
 require 'colorize'
-require_relative 'player.rb'
-require_relative 'computer_guesser.rb'
-require_relative 'code.rb'
-require_relative 'displayer.rb'
+require_relative 'player'
+require_relative 'computer_guesser'
+require_relative 'code'
+require_relative 'displayer'
 
 class Game
   MAX_ROUNDS = 12
@@ -30,8 +30,9 @@ class Game
     loop do
       @displayer.show_mode_menu
       choice = gets.chomp
-      return choice.to_i if ["1", "2"].include?(choice)
-      puts "Invalid choice.".colorize(:light_red)
+      return choice.to_i if %w[1 2].include?(choice)
+
+      puts 'Invalid choice.'.colorize(:light_red)
     end
   end
 

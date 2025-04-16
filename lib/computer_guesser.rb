@@ -1,5 +1,5 @@
 require 'colorize'
-require_relative 'code.rb'
+require_relative 'code'
 
 class ComputerGuesser
   def initialize
@@ -11,7 +11,7 @@ class ComputerGuesser
   def make_guess
     # Predeterminated guess for the first one
     @last_guess = if @possible_codes.size == @all_possible_codes.size
-                    [:red, :red, :green, :green]
+                    %i[red red green green]
                   else
                     @possible_codes.sample
                   end

@@ -10,6 +10,10 @@ class Code
     @value = value || generate_random_code
   end
 
+  def self.color_options
+    COLORS.map { |c| c.to_s.colorize(c) }.join(', ')
+  end
+
   def evaluate_guess(guess)
     exact_matches = 0
     color_matches = 0

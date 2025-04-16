@@ -47,11 +47,9 @@ class Game
   end
 
   def play_computer_guessing
-    def initialize
-      @secret_code = @player.create_code
-      @computer = ComputerGuesser.new
-      puts "\nComputer will now try to guess your code..."
-    end
+    @secret_code = @player.create_code
+    @computer = ComputerGuesser.new
+    puts "\nComputer will now try to guess your code..."
 
     until game_over?
       @rounds_played += 1
